@@ -1,8 +1,9 @@
 <?php 
- 
+ session_start();
 $page_title = "Add Student";
 $css_file = 'style.css';
- 
+if(isset($_SESSION['name'])){
+  
 include("./includes/template/header.php");
 require_once("./connect_db.php");
 require("./includes/functions/functions.php");
@@ -51,5 +52,8 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == "POST"){
 
 include_once("./includes/template/footer.php");
 
+}else{
+  header('location:signin.php');
+}
  
  ?>

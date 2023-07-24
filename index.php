@@ -1,11 +1,15 @@
 <?php
+session_start();
 $page_title = "All Students";
 $css_file = 'style.css';
+if(isset($_SESSION['name'])){
+
 include("./includes/template/header.php");
 require_once("./connect_db.php");
 require("./includes/functions/functions.php");
 
-?>
+?> 
+
 <div class="container mt-5" >
 <table class="table">
   <thead>
@@ -40,11 +44,15 @@ require("./includes/functions/functions.php");
 
 
 <a href="add_student.php">Add student</a>
+<a href="logout.php">logout</a>
 </div>
 
 
 <?php 
 include('./includes/template/footer.php');
+}else{
+  header('location:signin.php');
+}
 
 ?>
 
